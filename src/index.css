@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 260 20% 10%;
+    --foreground: 0 0% 100%;
+
+    --card: 260 18% 14%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 260 18% 14%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 38 70% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 260 15% 18%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 260 12% 20%;
+    --muted-foreground: 260 10% 65%;
+
+    --accent: 38 80% 50%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 260 15% 22%;
+    --input: 260 15% 22%;
+    --ring: 38 70% 35%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --gold: 38 80% 50%;
+    --gold-dark: 38 70% 35%;
+    --gold-glow: 38 90% 60%;
+    --dark-surface: 260 20% 8%;
+    --dark-overlay: 0 0% 0%;
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+
+    --sidebar-background: 260 20% 8%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 38 70% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 260 15% 18%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 260 15% 22%;
+    --sidebar-ring: 38 70% 35%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-glow)));
+  }
+
+  .bg-gold-gradient {
+    background: linear-gradient(135deg, hsl(var(--gold-dark)), hsl(var(--gold)));
+  }
+
+  .shadow-gold {
+    box-shadow: 0 6px 20px hsl(var(--gold) / 0.25);
+  }
+
+  .bg-geo-pattern {
+    background-color: hsl(var(--background));
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 60px 60px;
+    position: relative;
+  }
+
+  .bg-geo-pattern::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 20%, hsl(var(--gold) / 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 80%, hsl(var(--primary) / 0.06) 0%, transparent 50%);
+    pointer-events: none;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
